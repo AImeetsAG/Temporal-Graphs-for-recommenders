@@ -1,0 +1,186 @@
+\documentclass[10pt, letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FONT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[condensed,math]{kurier}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% MARGINS & SPACING %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[left=1.5cm, right=1.5cm, top=1cm, bottom=1cm]{geometry}
+
+\usepackage{setspace}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0pt, partopsep=0pt}
+\setlist[itemize]{after=\vspace{-\baselineskip}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor}
+\definecolor{darkPinkHighlight}{HTML}{E0249A}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HYPER-REF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+	pdftoolbar=true,                        
+	pdfmenubar=false,                        
+	pdffitwindow=false,                      
+	pdfstartview={FitH},                    
+	pdftitle={Graphical},    
+	pdfauthor={Abhinav Chand, 
+		       Tristan Freiberg,
+		       Ishika Ghosh,
+		       Rashmika Goswami, 
+		       Astrid Olave,
+		       Henry Tucker},    
+	pdfcreator={Abhinav Chand, 
+				Tristan Freiberg,
+				Ishika Ghosh,
+				Rashmika Goswami, 
+				Astrid Olave,
+				Henry Tucker},
+	pdfproducer={Abhinav Chand, 
+				 Tristan Freiberg,
+				 Ishika Ghosh,
+				 Rashmika Goswami, 
+				 Astrid Olave,
+				 Henry Tucker},
+	pdfnewwindow=true,                       
+	colorlinks=true,
+	linkcolor={darkPinkHighlight},                      
+	citecolor={darkPinkHighlight},
+	filecolor={darkPinkHighlight},
+	urlcolor={darkPinkHighlight},         
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% HEADERS & FOOTERS %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\title}[1]{%
+	\begin{center}
+		{\Large \bfseries \uppercase{#1}}
+	\end{center}
+}
+
+\renewcommand{\section}[1]{%
+	    \vspace{\parskip}
+		{\large \bfseries\uppercase{#1}}
+}
+
+\newcommand{\itemTitle}[1]{%
+	{\bfseries\uppercase{#1}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONTEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+\title{Graphical (think of a better title)}
+	
+\section{Dataset Description}
+	
+\begin{itemize}
+\item \itemTitle{Temporal Graph:} [This is just copy-paste. Need to 
+re-write, give 
+credit to creators, and add citations.] The 
+\href{https://tgb.complexdatalab.com/docs/nodeprop/}{\tt{tgbn-genre}} 
+dataset is a bipartite and weighted interaction network between users 
+and music genres. It represents users and music genres as nodes, 
+where an interaction denotes a user listening to a music genre at a 
+given time. Edge weights indicate the percentage of a song belonging 
+to a specific genre. The dataset is derived by linking songs from the 
+LastFM-song-listens dataset with music genres from the million-song 
+dataset. 
+\end{itemize}
+	
+\section{Value to Industry/Business}
+
+\begin{itemize}
+\item \itemTitle{Improved Recommendation Systems:} This project aims 
+to 
+enhance recommendation systems for streaming services like Spotify, 
+Netflix, and YouTube. By predicting which set of music/movie/content 
+genres a user will interact with the most, we can personalize 
+recommendations, improve user experience, and increase user 
+engagement and retention.
+\end{itemize}
+	
+\section{Key Stakeholders}
+\begin{itemize}
+\item Spotify, Netflix, YouTube, and other streaming services
+%\item Data analysts, data scientists, and machine learning engineers
+\item End users (listeners and viewers)
+\end{itemize}
+	
+\section{Key Performance Indicators (KPIs)}
+
+\begin{itemize}
+\item \itemTitle{MRR score:} [Brief explanation and reference]
+\item Something about the
+{\href{https://tgb.complexdatalab.com/docs/leader_nodeprop/\#tgbn-genre}{leaderboard}}:
+ can we get on it?
+\item \itemTitle{User Engagement:} Track user engagement metrics such 
+as 
+time spent on platform, number of interactions, and user feedback.
+\item \itemTitle{Retention Rate:} Evaluate the impact of personalized 
+recommendations on user retention and satisfaction.
+\item \itemTitle{Business Impact:} Assess the business impact in 
+terms 
+of increased subscriptions, ad revenue, and customer loyalty.
+\end{itemize}
+	
+\section{Proposal Overview}
+
+\begin{itemize}
+\item \itemTitle{Objective:} Develop a machine learning model to 
+predict 
+user interactions with music genres over the next week.
+\item \itemTitle{Approach:} Utilize advanced graph-based algorithms 
+and 
+predictive modeling techniques to analyze user behavior patterns and 
+preferences.
+\item \itemTitle{Expected Outcome:} Deliver a scalable and accurate 
+prediction system that enhances recommendation algorithms and drives 
+business growth for streaming platforms.
+\end{itemize}
+	
+\section{Conclusion}
+
+Enhancing recommendation systems through predictive analytics can  
+revolutionize the user experience in the streaming industry. By 
+leveraging the 
+\href{https://tgb.complexdatalab.com/docs/nodeprop/}{\tt{tgbn-genre}} 
+dataset, we aim to create actionable insights and strategic 
+recommendations that empower businesses to deliver personalized 
+content and stay ahead in a competitive market.
+
+\section{References}
+
+main paper(s)
+
+TGB website 
+
+etc.
+	
+\end{document}	
