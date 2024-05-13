@@ -9,3 +9,8 @@
 # TGNN
 1. https://www.youtube.com/watch?v=WEWq93tioC4
 2. https://www.youtube.com/watch?v=0tw66aTfWaI
+
+# TDA
+1. https://www.youtube.com/watch?v=DIeFl-o1z6I
+2. https://www.youtube.com/watch?v=zzQdCxXpbb4
+
