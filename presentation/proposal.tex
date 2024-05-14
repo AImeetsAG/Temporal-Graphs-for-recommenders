@@ -4,21 +4,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FONT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[condensed,math]{kurier}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% MARGINS & SPACING %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[left=1.5cm, right=1.5cm, top=1cm, bottom=1cm]{geometry}
+\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}
 
 \usepackage{setspace}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 
 \usepackage{enumitem}
-\setlist[itemize]{topsep=0pt, partopsep=0pt}
-\setlist[itemize]{after=\vspace{-\baselineskip}}
+\setlist[itemize]{%
+	 			  topsep=0pt, 
+	              partopsep=0pt, 
+	              leftmargin=*,	
+	              parsep=0pt,
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COLORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,9 +66,9 @@
 				 Henry Tucker},
 	pdfnewwindow=true,                       
 	colorlinks=true,
-	linkcolor={darkPinkHighlight},                      
+	linkcolor={black},                      
 	citecolor={darkPinkHighlight},
-	filecolor={darkPinkHighlight},
+	filecolor={black},
 	urlcolor={darkPinkHighlight},         
 }
 
@@ -87,100 +94,104 @@
 }
 
 \newcommand{\itemTitle}[1]{%
-	{\bfseries\uppercase{#1}}
+	{\bfseries{#1}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONTEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONTENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 	
 \title{Graphical (think of a better title)}
 	
-\section{Dataset Description}
+\section{Dataset}
 	
 \begin{itemize}
-\item \itemTitle{Temporal Graph:} [This is just copy-paste. Need to 
-re-write, give 
-credit to creators, and add citations.] The 
-\href{https://tgb.complexdatalab.com/docs/nodeprop/}{\tt{tgbn-genre}} 
-dataset is a bipartite and weighted interaction network between users 
-and music genres. It represents users and music genres as nodes, 
-where an interaction denotes a user listening to a music genre at a 
-given time. Edge weights indicate the percentage of a song belonging 
-to a specific genre. The dataset is derived by linking songs from the 
-LastFM-song-listens dataset with music genres from the million-song 
-dataset. 
+\item 
+\href{https://github.com/shenyangHuang/TGB/blob/main/tgb/datasets/dataset_scripts/tgbn-genre.py}{\tt{tgbn-genre}} \cite{tgbn-genre}. Paraphrasing \cite{H_web:2023} (\url{https://tgb.complexdatalab.com/docs/nodeprop/#tgbn-genre}): a bipartite and weighted interaction network between users and music genres, representing users and music genres as nodes, where an interaction denotes a user listening to a music genre at a given time. Edge weights indicate the percentage of a song belonging to a specific genre. The dataset is derived by linking songs from the LastFM-song-listens dataset with music genres from the million-song dataset. 
+
 \end{itemize}
 	
-\section{Value to Industry/Business}
+\section{Industry value}
 
 \begin{itemize}
-\item \itemTitle{Improved Recommendation Systems:} This project aims 
-to 
-enhance recommendation systems for streaming services like Spotify, 
-Netflix, and YouTube. By predicting which set of music/movie/content 
-genres a user will interact with the most, we can personalize 
-recommendations, improve user experience, and increase user 
-engagement and retention.
+\item \itemTitle{Improved recommendation systems:} We aim to enhance recommendation systems for streaming services like Spotify, Netflix, and YouTube. By predicting which set of music/movie/content genres a user will interact with the most, we can personalize recommendations, improve user experience, and increase user engagement and retention.
 \end{itemize}
 	
 \section{Key Stakeholders}
 \begin{itemize}
-\item Spotify, Netflix, YouTube, and other streaming services
-%\item Data analysts, data scientists, and machine learning engineers
-\item End users (listeners and viewers)
+\item Spotify, Netflix, YouTube, and similar streaming services.
+\item End users (listeners and viewers).
 \end{itemize}
 	
-\section{Key Performance Indicators (KPIs)}
+\section{Key Performance Indicators}
 
 \begin{itemize}
-\item \itemTitle{MRR score:} [Brief explanation and reference]
-\item Something about the
-{\href{https://tgb.complexdatalab.com/docs/leader_nodeprop/\#tgbn-genre}{leaderboard}}:
- can we get on it?
-\item \itemTitle{User Engagement:} Track user engagement metrics such 
-as 
-time spent on platform, number of interactions, and user feedback.
-\item \itemTitle{Retention Rate:} Evaluate the impact of personalized 
-recommendations on user retention and satisfaction.
-\item \itemTitle{Business Impact:} Assess the business impact in 
-terms 
-of increased subscriptions, ad revenue, and customer loyalty.
+\item \itemTitle{MRR score:} Model performance will be evaluated using mean reciprocal rank metric (see \cite{H:2023} for further information).
+\item \itemTitle{Leaderboard:} Does the model perform well enough to earn a place on the relevant TGB {\href{https://tgb.complexdatalab.com/docs/leader_nodeprop/\#tgbn-genre}{leaderboard}} (see \cite{H_web:2023}).
+\item \itemTitle{User engagement:} [Hypothetical.] User engagement metrics such as time spent on platform, number of interactions, feedback, etc.
+\item \itemTitle{Retention rate:} [Hypothetical.] Impact of personalized recommendations on user retention and satisfaction.
+\item \itemTitle{Business impact:} [Hypothetical.] Increased subscriptions, ad revenue, customer loyalty, etc.
 \end{itemize}
 	
 \section{Proposal Overview}
 
 \begin{itemize}
 \item \itemTitle{Objective:} Develop a machine learning model to 
-predict 
-user interactions with music genres over the next week.
-\item \itemTitle{Approach:} Utilize advanced graph-based algorithms 
-and 
-predictive modeling techniques to analyze user behavior patterns and 
-preferences.
-\item \itemTitle{Expected Outcome:} Deliver a scalable and accurate 
-prediction system that enhances recommendation algorithms and drives 
-business growth for streaming platforms.
+predict user interactions with music genres over the next week.
+\item \itemTitle{Approach:} Use advanced graph-based algorithms 
+to model user behavior patterns and preferences.
+\item \itemTitle{Expected outcome:} A scalable and well-performing prediction system that enhances existing recommendation algorithms and drives business growth for streaming platforms.
 \end{itemize}
 	
 \section{Conclusion}
 
-Enhancing recommendation systems through predictive analytics can  
-revolutionize the user experience in the streaming industry. By 
-leveraging the 
-\href{https://tgb.complexdatalab.com/docs/nodeprop/}{\tt{tgbn-genre}} 
-dataset, we aim to create actionable insights and strategic 
-recommendations that empower businesses to deliver personalized 
-content and stay ahead in a competitive market.
+Enhancing recommendation systems through predictive analytics can  revolutionize the user experience in the streaming industry. By leveraging the \href{https://tgb.complexdatalab.com/docs/nodeprop/}{\tt{tgbn-genre}} dataset \cite{tgbn-genre}, we aim to create actionable insights and strategic recommendations that empower businesses to deliver personalized content and stay ahead in a competitive market.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{References}
 
-main paper(s)
+\begingroup
 
-TGB website 
+\renewcommand{\section}[2]{}%
 
-etc.
+\begin{thebibliography}{3}
+	
+\bibitem{H:2023}
+Huang, S., et al.
+\href{https://doi.org/10.48550/arXiv.2307.01026}
+{``Temporal Graph Benchmark for Machine Learning on Temporal 
+Graphs.''}
+Preprint. \url{arXiv:2307.01026}, 2023.
+	
+\bibitem{H_GH:2023}
+Huang, S., et al. 
+\href{https://github.com/shenyangHuang/TGB}
+{``TGB.''}
+GitHub Repository. \url{https://github.com/shenyangHuang/TGB}, 2023. 
+Accessed May 14, 2024.
+
+\bibitem{H_web:2023}
+Huang, S., et al.
+\href{https://tgb.complexdatalab.com/}
+{``Temporal Graph Benchmark.''}
+\url{https://tgb.complexdatalab.com/}, 2023.
+Accessed May 14, 2024.
+
+\bibitem{tgbn-genre}
+Huang, S., et al.
+\href{https://github.com/shenyangHuang/TGB/blob/main/tgb/datasets/dataset_scripts/tgbn-genre.py}
+{``{\tt{tgbn-genre}} dataset.''}
+\url{https://github.com/shenyangHuang/TGB/blob/main/tgb/datasets/dataset_scripts/tgbn-genre.py},
+ 2023. 
+Accessed May 14, 2024.
+	
+\end{thebibliography}
+
+\endgroup	
 	
 \end{document}	
