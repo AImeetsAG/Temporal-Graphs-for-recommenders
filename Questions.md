@@ -9,7 +9,7 @@
 
 3. How was the dataset collected?
 
-     Ans. Combined [last.fm dataset](https://github.com/eifuentes/lastfm-dataset-1K/blob/master/preprocessing.ipynb]  (https://github.com/eifuentes/lastfm-dataset-1K) and [million songs dataset](http://millionsongdataset.com/). 
+     Ans. Combined [lastfm dataset](https://github.com/eifuentes/lastfm-dataset-1K) and [million songs dataset](http://millionsongdataset.com/). 
 
 
 5. The average number of genres is 135 for each user. How is this possible?
