@@ -18,7 +18,7 @@
 
 7. What is the unit of time in the timestamps column?
 
-     Ans. Unix time. Can convert using in [python](https://www.geeksforgeeks.org/how-to-convert-datetime-to-unix-     timestamp-in-python/)
+     Ans. Unix time. Can convert using in [python](https://www.geeksforgeeks.org/how-to-convert-datetime-to-unix-   timestamp-in-python/)
 
 9. If the timestamps are unix , converting the dates are from 2005 to 2009. Was not supposed to be a month?
 
