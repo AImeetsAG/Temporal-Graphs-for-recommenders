@@ -1,0 +1,8 @@
+# Ignore these folders:
+*/.ipynb_checkpoints
+*/__pycache__/
+
+# These files are too large:
+/data/tgbn_genre.csv
+/data/tgbn_genre_edgelist.csv
+/data/tgbn_genre_node_labels.csv
