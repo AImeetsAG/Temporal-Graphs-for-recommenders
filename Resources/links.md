@@ -14,3 +14,7 @@
 1. https://www.youtube.com/watch?v=DIeFl-o1z6I
 2. https://www.youtube.com/watch?v=zzQdCxXpbb4
 
+# EDA
+For EDA Andrada is one of the best gradmasters: 
+https://www.kaggle.com/andradaolteanu/code
+
