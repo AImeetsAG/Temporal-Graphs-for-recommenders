@@ -5,11 +5,11 @@ The numbers presented in the paper are not correct\
         Took moving average with window =7,14,21
         Don't have hardware to do a proper gridlike hyperparameter tuning. For now window =14 performs best.
 
-| Model   | NDCG @10 (Validation) | NDCG @10 (Test)
+| Model   | NDCG @10 (Validation) +- 0.0001 | NDCG @10 (Test) +-0.0001
 | -------- | ------- | ------- |
-| Latest node lable  | 0.13992    | 0.1314
-| Mean node label | 0.1757    | 0.1674
-| Median node label    | 0.1635    | 0.1565
+| Latest node label (Baseline)  | 0.1435   | 0.1300
+| Mean node label | 0.1793    | 0.1669
+| Median node label    | 0.1676    | 0.1559
 | Rolling average (Window=7)    | 0.1635    | 0.1565
 | Rolling average (Window=14)    | 0.1798   | 0.1684
 | Rolling average (Window=21)    | 0.1798   | 0.1681
