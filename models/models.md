@@ -11,5 +11,5 @@ The numbers presented in the paper are not correct\
 | Mean node label | 0.1793    | 0.1669
 | Median node label    | 0.1676    | 0.1559
 | Rolling average (Window=7)    | 0.1789    | 0.1616
-| Rolling average (Window=14)    | 0.1798   | 0.1684
-| Rolling average (Window=21)    | 0.1798   | 0.1681
+| Rolling average (Window=14)    | 0.1972   | 0.1770
+| Rolling average (Window=21)    | 0.1972   | 0.1769
