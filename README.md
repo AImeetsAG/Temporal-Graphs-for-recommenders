@@ -1,8 +1,15 @@
 # Temporal-Graphs
-Capstone project for Erdos Bootcamp Summer 2024
+## Team Graphical
+### Team Members
 
-tgbn-genre.ipynb has data loading and basic eda.
+[**Abhinav Chand**](https://github.com/AImeetsAG),
+[**Tristan Freiberg**](https://github.com/tmfreiberg), 
+[**Astrid Olave**](https://github.com/aaolaveh), 
+[**Ishika Ghosh**](https://github.com/ishikaghosh2201), 
 
-Resources has links to papers and other resources on GNN, time series and TDA.
+This is the team repository of team **_Graphical_** at Summer 2024 Bootcamp at Erdos institute. 
+This repository hosts our work on Temporal Graphs for Music Recommender Systems.
 
-Presentations has proposal for the project.
+---
+
+## Motivation and goal
