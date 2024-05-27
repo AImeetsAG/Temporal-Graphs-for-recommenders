@@ -13,3 +13,5 @@ The numbers presented in the paper are not correct\
 | Rolling average (Window=7)    | 0.1789    | 0.1616
 | Rolling average (Window=14)    | 0.1972   | 0.1770
 | Rolling average (Window=21)    | 0.1972   | 0.1769
+| Exponential Smoothing ($\alpha=0.8$)    | 0.1642   | 0.1453
+| Exponential Smoothing ($\alpha=0.4$)    | 0.1827   | 0.1619
