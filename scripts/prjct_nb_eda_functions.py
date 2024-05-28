@@ -4,8 +4,14 @@ from typing import Union
 from scripts.prjct_utls import print_header
 import time
 import numpy as np
+from pathlib import Path
 
-
+'''
+This file contains functions for the EDA notebook.
+These functions are very specific to that notebook and do not generalize at all.
+They are essentially code cells of the EDA notebook.
+We've just placed them here to make the presentation of the notebook cleaner, without long code cells.
+'''
 
 '''
 QUESTION CONCERNING DUPLICATE AND NEAR-DUPLICATE RECORDS
@@ -193,7 +199,14 @@ def discretize(df: pd.DataFrame) -> pd.DataFrame:
 
 '''UNNORMALIZED NODE LABELS'''
 
-def unnormalized_node_labels(df: pd.DataFrame) -> pd.DataFrame:
+def unnormalized_node_labels(df: pd.DataFrame, test: bool = False) -> pd.DataFrame:
+    parent_directory = Path(__file__).resolve().parent.parent
+    csv_path = parent_directory / 'data'/ 'tgbn-genre_node_labels_unnormalized.csv'
+    if not test and csv_path.is_file():
+        print('File already exists. Loading now.')
+        print('Originally, the DataFrame took 3973.41 seconds to generate.')
+        return pd.read_csv(csv_path)
+        
     print('Creating unnormalized node labels.')
     
     tic = time.time()
@@ -257,5 +270,93 @@ def unnormalized_node_labels(df: pd.DataFrame) -> pd.DataFrame:
     df_node = df_node[column_order]
     
     toc = time.time()
-    print(f'Time taken: {toc - tic:.2f} seconds.')
+    print(f'DataFrame complete. Time taken: {toc - tic:.2f} seconds.')
+    if not test:
+        print('Saving DataFrame to \'data/tgbn-genre_node_labels_unnormalized.csv\'.')
+        tic = time.time()
+        df_node.to_csv(csv_path, index=False)
+        toc = time.time()
+        print(f'Time taken: {toc - tic:.2f} seconds.')
+    return df_node
+
+'''
+NORMALIZED NODE LABELS
+'''
+
+def normalize_node_labels(df_node: pd.DataFrame) -> pd.DataFrame:
+    tic = time.time()
+    print('Grouping by \'sources\', \'week\' and summing \'week_feat_sum\'.')
+    grouped_sum = df_node.groupby(['sources', 'week'])['week_feat_sum'].sum().reset_index()
+    
+    print('Rename the summed column to \'week_total\'.')
+    grouped_sum.rename(columns={'week_feat_sum': 'week_total'}, inplace=True)
+    print('Grouped dataframe'.upper())
+    display(grouped_sum.head())
+    
+    print('Merging the \'week_total\' column back to the original DataFrame.')
+    df_node = df_node.merge(grouped_sum, on=['sources', 'week'], how='left')
+    display(df_node.head())
+    
+    toc = time.time()
+    print(f'Time taken: {toc - tic:.2f} seconds')
+
+    try:
+        print('Repeating for version with duplicate records taken into account.')
+        tic = time.time()
+        print('Grouping by \'sources\', \'week\' and summing \'week_feat_sum_mult\'.')
+        grouped_sum = df_node.groupby(['sources', 'week'])['week_feat_sum_mult'].sum().reset_index()
+        
+        print('Rename the summed column to \'week_total_mult\'.')
+        grouped_sum.rename(columns={'week_feat_sum_mult': 'week_total_mult'}, inplace=True)
+        print('Grouped dataframe'.upper())
+        display(grouped_sum.head())
+        
+        print('Merging the \'week_total_mult\' column back to the original DataFrame.')
+        df_node = df_node.merge(grouped_sum, on=['sources', 'week'], how='left')
+        display(df_node.head())
+        
+        toc = time.time()
+        print(f'Time taken: {toc - tic:.2f} seconds')
+    except:
+        pass
+
+    print('Adding \'weight\' column (\'week_feat_sum\' divided by \'week_total\').')
+    tic = time.time()
+    df_node['weight'] = df_node['week_feat_sum']/df_node['week_total']
+    toc = time.time()
+    print(f'Time taken: {toc - tic:.2f} seconds')
+
+    try:
+        print('Adding \'weight_mult\' column (\'week_feat_sum_mult\' divided by \'week_total_mult\').')
+        tic = time.time()
+        df_node['weight_mult'] = df_node['week_feat_sum_mult']/df_node['week_total_mult']
+        toc = time.time()
+        print(f'Time taken: {toc - tic:.2f} seconds')
+    except:
+        pass
+    
+    print('Reordering columns.')
+    try:
+        column_order = ['sources', 
+                        'destinations', 
+                        'week', 
+                        'week_feat_sum',
+                        'week_total',
+                        'weight',
+                        'week_feat_sum_mult',                  
+                        'week_total_mult',                 
+                        'weight_mult'
+                       ]
+        df_node = df_node[column_order]
+    except:
+        column_order = ['sources', 
+                        'destinations', 
+                        'week', 
+                        'week_feat_sum',
+                        'week_total',
+                        'weight',
+                       ]
+        df_node = df_node[column_order] 
+    
+    display(df_node.head())
     return df_node
