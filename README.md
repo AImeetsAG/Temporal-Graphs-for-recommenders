@@ -1,6 +1,4 @@
-# Temporal-Graphs
-## Team Graphical
-### Team Members
+# Musical preference predictions
 
 [**Abhinav Chand**](https://github.com/AImeetsAG),
 [**Tristan Freiberg**](https://github.com/tmfreiberg), 
@@ -11,6 +9,15 @@ This is the team repository of team **_Graphical_** at Summer 2024 Bootcamp at E
 This repository hosts our work on Temporal Graphs for Music Recommender Systems.
 
 ---
+# Table of contents
+
+  * [Motivation and goal](#Motivation-and-goal)
+  * [Dataset](#Dataset)
+  * [Exploratory Data Analysis](#Exploratory-Data-Analysis)
+  * [Modeling Approach](#Modeling-Approach)
+  * [Conclusions and Future Directions](#Conclusions-and-Future-Directions)
+  * [Description of Repository](#Description-of-Repository)
+
 
 ## Motivation and goal
 
@@ -31,7 +38,7 @@ for Music Information Retrieval Conference (ISMIR 2011)_, 2011. http://millionso
 
 
 ## Approach
-Our goal was to predict the frequency interaction vector of users in the test dataset. After the exploratory data analysis, we proceeded with basic time series models for the prediction. 
+Our goal is to predict  the frequency interaction vector of users in the test dataset. After the exploratory data analysis, we proceeded with basic time series models for the prediction. 
 
 Time series
 
