@@ -5,6 +5,11 @@ from scripts.prjct_utls import print_header
 import time
 import numpy as np
 from pathlib import Path
+import networkx as nx
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+from datetime import datetime, timezone
 
 '''
 This file contains functions for the EDA notebook.
@@ -360,3 +365,75 @@ def normalize_node_labels(df_node: pd.DataFrame) -> pd.DataFrame:
     
     display(df_node.head())
     return df_node
+
+'''
+VISUALIZATION
+'''
+
+def plot_graph(df: pd.DataFrame, 
+               fname: Union[None, str] = None,) -> Union[FuncAnimation, str]:
+    # Make a deep copy of df so there's no chance anything we do here will affect the input DataFrame.
+    # The input DataFrame should be a copy of a small piece of the original edge list DataFrame anyway.
+    df_copy = df.copy(deep=True)
+    # Let's get rid of 'near-duplicate' records, of there are any: we don't want edges displaying on top of edges (especially with the labels).
+    # This is just for a visual so there's no need to worry too much about details like that.
+    df_copy = df_copy.drop_duplicates(subset=['sources', 'destinations', 'timestamps'], keep='first')
+    # Extract the distinct users U, genres V, and timestamps T among these records
+    U = sorted(df_copy['sources'].unique())
+    V = sorted(df_copy['destinations'].unique())
+    T = sorted(df_copy['timestamps'].unique())
+
+    # Initialize a bipartite graph with U one part and V the other
+    B = nx.MultiGraph()
+    B.add_nodes_from(U, bipartite=0)
+    B.add_nodes_from(V, bipartite=1)
+
+    # Create a figure and axis for the animation
+    fig, ax = plt.subplots(figsize=(10, 8))
+
+    # Initialize an empty list to store frames
+    frames = []
+
+    # Define the update function for the animation
+    def update(ts_idx):
+        ax.clear()  # Clear the axis for the new plot
+        B.clear_edges() # Also clear the edges
+        # Create a smaller DataFrame with just the records corresponding to the timestamp T[ts_idx]
+        df_this_frame = df_copy[df_copy['timestamps'] == T[ts_idx]]
+        # Run over the records and add an edge for each user-genre pair, with weight given by edge feature column
+        for idx in df_this_frame.index:
+            s = df_this_frame.loc[idx, 'sources']
+            d = df_this_frame.loc[idx, 'destinations']
+            w = df_this_frame.loc[idx, 'edge_feat']
+            round_w = round(w, 4)
+            B.add_edge(s, d, weight=round_w)
+        
+        pos = nx.bipartite_layout(B, U)
+
+        # Draw the graph with formatting etc.
+        options = {"edgecolors": "black", "node_color":"white", "edge_color":"black", "node_size": 800, "alpha": 0.9, "font_size":10}
+        nx.draw(B, pos, with_labels=True, **options, ax=ax)
+        
+        edge_labels = {(u, v): d['weight'] for u, v, d in B.edges(data=True)}
+            
+        nx.draw_networkx_edge_labels(B, pos, edge_labels=edge_labels, ax=ax)
+        # nx.draw_networkx_edge_labels(B, pos, edge_labels={}, ax=ax)
+    
+        # Convert the timestamp to a human-readable date
+        date_time = datetime.fromtimestamp(T[ts_idx], timezone.utc)
+        formatted_date_time = date_time.strftime('%A %B %d, %Y, %I:%M:%S %p')
+        # Display the date as title
+        ax.set_title(f'{formatted_date_time}')
+       
+    # Create the animation
+    animation = FuncAnimation(fig, update, frames=len(T), interval=1000, blit=False)
+
+    if bool(fname):
+        # Save the animation to a GIF file
+        parent_directory = Path(__file__).resolve().parent.parent
+        fname = fname.split('.')[0] + '.gif'
+        gif_path = parent_directory / 'presentation'/ fname
+        animation.save(gif_path, writer='pillow')
+
+    # Display the animation in the notebook    
+    return HTML(animation.to_jshtml())
