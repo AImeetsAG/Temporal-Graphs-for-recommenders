@@ -36,11 +36,15 @@ We worked with _tgbn-genre_ dataset, a temporal evolving graph from Temporal Gra
 "The Million Song Dataset". _In Proceedings of the 12th International Society
 for Music Information Retrieval Conference (ISMIR 2011)_, 2011. http://millionsongdataset.com/
 
+## Exploratory Data Analysis
 
-## Approach
+## Modelling Approach
 Our goal is to predict  the frequency interaction vector of users in the test dataset. After the exploratory data analysis, we proceeded with basic time series models for the prediction. 
 
 Time series
 
+## Conclusions and Future Directions
+
+## Description of Repository
 
 
