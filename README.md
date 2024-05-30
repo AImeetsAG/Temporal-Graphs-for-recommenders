@@ -21,7 +21,7 @@ This repository hosts our work on Temporal Graphs for Music Recommender Systems.
 
 ## Motivation and goal
 
-" Nearly 616.2 million people listen to their favorite artists or discover new ones via online streaming platforms "[^statista]. Hence, streaming platforms seek to increase enhance the user experience by offering personalized music recommendations, moreover, users value personalization as a top feature [^spotify]. At the same time, music streaming services are able to track individual preferences meticulously, thus, a growing volume of data on  multiple user's musical preferences is available.
+"Nearly 616.2 million people listen to their favorite artists or discover new ones via online streaming platforms"[^statista]. Hence, streaming platforms seek to increase enhance the user experience by offering personalized music recommendations, moreover, users value personalization as a top feature [^spotify]. At the same time, music streaming services are able to track individual preferences meticulously, thus, a growing volume of data on  multiple user's musical preferences is available.
 In response, we aimed to develop a recommendation model that predicts the genres a user is expected to like.
 
 [^statista]: Götting M. "Music streaming worldwide - statistics \& facts". 10 Jan 2024. https://www.statista.com/topics/6408/music-streaming/#topicOverview. Accessed May 28, 2024.
