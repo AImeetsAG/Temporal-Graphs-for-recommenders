@@ -10,11 +10,11 @@ Below is the results from our models
 
 | Model   | NDCG @10 (Validation) +- 0.0001 | NDCG @10 (Test) +-0.0001
 | -------- | ------- | ------- |
-| Latest node label (Baseline)  | 0.1435   | 0.1300
-| Mean node label | 0.1793    | 0.1669
-| Median node label    | 0.1676    | 0.1559
-| Rolling average (Window=7)    | 0.1789    | 0.1616
-| Rolling average (Window=14)    | 0.1972   | 0.1770
-| Rolling average (Window=21)    | 0.1972   | 0.1769
+| Latest node label (Baseline)  | 0.18068   | 0.1575
+| Mean node label | 0.2310    | 0.2034
+| Median node label    | 0.2140    | 0.1888
+| Rolling average (Window=7)    | 0.2242    | 0.1951
+| Rolling average (Window=14)    | 0.2333   | 0.2008
+| Rolling average (Window=21)    | 0.2345   | 0.2014
 | Exponential Smoothing ($\alpha=0.8$)    | 0.1642   | 0.1453
 | Exponential Smoothing ($\alpha=0.4$)    | 0.1827   | 0.1619

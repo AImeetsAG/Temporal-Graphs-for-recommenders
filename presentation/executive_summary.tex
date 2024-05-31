@@ -5,9 +5,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[scaled]{uarial}
-\renewcommand*\familydefault{\sfdefault} 
+\renewcommand\familydefault{\sfdefault}
+
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% MARGINS & SPACING %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,20 +101,23 @@
 
 \section{Motivation}
 
-``Nearly 616.2 million people listen to their favorite artists or discover new ones via online streaming platforms" \cite{statista}. Hence, streaming platforms seek to increase enhance the user experience by offering personalized music recommendations. At the same time, music streaming services are able to track individual preferences meticulously, thus, a growing volume of data on  multiple user's musical preferences is available.
-In response, we aimed to develop a recommendation model that predicts the genres a user is expected to like.
+``Nearly 616.2 million people listen to their favorite artists or discover new ones via online streaming platforms" \cite{statista}. Hence, streaming platforms seek to increase enhance the user experience by offering personalized music recommendations, moreover, users value personalization as a top feature \cite{spotify}. At the same time, music streaming services are able to track individual preferences meticulously, thus, a growing volume of data on  multiple user's musical preferences is available.
+In response, we aimed to develop a recommendation model that predicts the genres a user is expected to like
 
-\section{Datasets}
+\section{Modeling approach}
 
-We worked with a temporal evolving graph from Temporal Graph Benchmark (TGB) \cite{H:2023} datasets. TGB provides two data sets: First, a graph with 1000 users and 500 music genres represented as nodes and weighted edges that indicates a user listens to a music genre at a given time. The temporal graph evolves over the span of 4 years. The dataset posed a challenge since the description given by the creators of the dataset did not match it. Additionally, it has anomalies and multiple duplicates. A second dataset derives from the first, a dynamical matrix of users and genres where the interaction of each user and each genre is normalized over the span of a week. We train our models on this second dataset. Nevertheless, we explore the first dataset to comprehend the second one.
+We worked with a temporal evolving graph from Temporal Graph Benchmark (TGB) \cite{H:2023} datasets. TGB provides two data sets: First, a graph with 992 users and 513 music genre represented as nodes and weighted edges that indicates a user listens to a music genre at a given time. The temporal graph evolves over the span of 4 years.  The dataset posed a challenge since the description given by the creators of the dataset did not match it. Additionally, it has anomalies and multiple duplicates. A second dataset derives from the first, a dynamical matrix of users and genres where the interaction of each user and each genre is normalized over the span of a week. We train our models on this second dataset. Our goal is predicting the top 10 genres a user is likely to listen to in the following weeks of the training set.
+ 
+\textbf{Train-test-split}: We split chronologically into the train, validation and test set with 70\%, 15\% and 15\% of the edges respectively. 
 
-\section{Approach}
-
-Our primary goal is to predict the the interaction of each user and each genre on the following week. We begin by ...
+\textbf{Models:}
 
 \section{Results}
 
-\section{Conclusion}
+
+\section{Next step \& benefits to stakeholders}
+
+In the future, we can improve our model training graph neural networks to learn the interaction of users and genres. In this way, music streaming services like Spotify, Apple Music, Amazon Music and similar platforms could create great and unique experiences for each user. 
 
 
 
@@ -124,13 +130,15 @@ Our primary goal is to predict the the interaction of each user and each genre o
 
 \bibitem{statista}
 Götting M. 
-``Music streaming worldwide - statistics \& facts". 10 Jan 2024, \url{https://www.statista.com/topics/6408/music-streaming/#topicOverview} Accessed May 28, 2024. 
+``Music streaming worldwide - statistics \& facts". 10 Jan 2024, \url{https://www.statista.com/topics/6408/music-streaming/#topicOverview}. Accessed May 28, 2024. 
 	
 \bibitem{H:2023}
 Huang, S., et al.
 \href{https://doi.org/10.48550/arXiv.2307.01026}
 {``Temporal graph benchmark for machine learning on temporal graphs.''} {\em Advances in Neural Information Processing Systems}, 2023. Preprint: \url{arXiv:2307.01026}, 2023.
-	
+
+\bibitem{spotify}
+Spotify. ``Understanding recommendations on Spotify".  \url{https://www.spotify.com/us/safetyandprivacy/understanding-recommendations}.  Accessed May 30, 2024. 
 	
 \end{thebibliography}
 
