@@ -4,19 +4,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FONT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[scaled]{uarial}
-\renewcommand\familydefault{\sfdefault}
-
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 
+\usepackage{tgbonum}
+%\usepackage[scaled]{uarial}
+\renewcommand\familydefault{\sfdefault}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% MARGINS & SPACING %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm]{geometry}
+\usepackage[left=1.4cm, right=1.4cm, top=1.4cm, bottom=1.4cm]{geometry}
 
 \usepackage{setspace}
 \setlength{\parindent}{0pt}
@@ -51,12 +51,15 @@
 	pdftitle={Graphical},    
 	pdfauthor={Abhinav Chand, 
 		       Tristan Freiberg,
+		       Ishika Ghosh,, 
 		       Astrid Olave},    
 	pdfcreator={Abhinav Chand, 
 				Tristan Freiberg,
+				Ishika Ghosh,, 
 				Astrid Olave},
 	pdfproducer={Abhinav Chand, 
 				 Tristan Freiberg,
+				 Ishika Ghosh, 
 				 Astrid Olave},
 	pdfnewwindow=true,                       
 	colorlinks=true,
@@ -78,13 +81,13 @@
 
 \renewcommand{\title}[1]{%
 	\begin{center}
-		{\Large \bfseries \uppercase{#1}}
+		{\Large \uppercase{#1}}
 	\end{center}
 }
 
 \renewcommand{\section}[1]{%
 	    \vspace{\parskip}
-		{\large \bfseries\uppercase{#1}}
+		{\large \uppercase{#1}}
 }
 
 \newcommand{\itemTitle}[1]{%
@@ -97,11 +100,11 @@
 
 \begin{document}
 	
-\title{Temporal Graphs for Music Recommendation Systems}
+\title{Temporal Graphs for Music recommendation system}
 
 \section{Motivation}
 
-``Nearly 616.2 million people listen to their favorite artists or discover new ones via online streaming platforms" \cite{statista}. Hence, streaming platforms seek to increase enhance the user experience by offering personalized music recommendations, moreover, users value personalization as a top feature \cite{spotify}. At the same time, music streaming services are able to track individual preferences meticulously, thus, a growing volume of data on  multiple user's musical preferences is available.
+``Nearly 616.2 million people listen to their favorite artists or discover new ones via online streaming platforms" \cite{statista}. Hence, streaming companies seek to increase enhance the user experience by offering personalized music recommendations, moreover, users value personalization as a top feature \cite{spotify}. At the same time, music streaming services are able to track individual musical choices meticulously, thus, a growing volume of data on  multiple user's musical preferences is available.
 In response, we aimed to develop a recommendation model that predicts the genres a user is expected to like
 
 \section{Modeling approach}
@@ -110,16 +113,31 @@ We worked with a temporal evolving graph from Temporal Graph Benchmark (TGB) \ci
  
 \textbf{Train-test-split}: We split chronologically into the train, validation and test set with 70\%, 15\% and 15\% of the edges respectively. 
 
-\textbf{Models:}
+\textbf{Models:} We experimented with several time series models. For the baseline model we chose the latest node label, i.e., for each user and genre in the test dataset, we look at the latest weight of that user for that genre in the training set and use that as the prediction. We looked at the time signal of the user genre weights for many users and did not find any seasonality or trend. Moreover, it was not feasible to detect seasonality or trend for all 992 users with a scalable algorithm.
+
+Then we tried rolling average and did hyperparameter tuning with the window parameter. Finally we tried exponential smoothing with hyperparameter tuning on the smoothing parameter.
+
+\textbf{Key performance indicator: }  We use the  normalized discounted cumulative gain with 10 items (NDCG@10). It is s a holistic metric that accounts for both the relevance of the item and the rank of the prediction compared to the ground truth.
 
 \section{Results}
-
-
+ 
+\begin{table}[h]
+\centering   
+\begin{tabular}{|l|l|l|}
+\hline
+Model                             & NDCG@10 (Validation) & NDCG@10 (Test)  \\ \hline
+Latest genre rating (Baseline)    & 0.18068              & 0.1575          \\ \hline
+Mean genre rating                 & 0.2310               & 0.2034          \\ \hline
+Rolling Average (Window= 7 days)  & 0.2242               & 0.1951          \\ \hline
+Rolling Average (Window= 14 days) & \textbf{0.2333}      & 0.2008          \\ \hline
+Rolling Average (Window= 21 days) & 0.2345               & \textbf{0.2014} \\ \hline
+Exponential Smoothing ($\alpha=0.8$)     & 0.1941               & 0.1662          \\ \hline
+Exponential Smoothing ($\alpha=0.4$)     & 0.1827               & 0.1619          \\ \hline
+\end{tabular}
+\end{table}
 \section{Next step \& benefits to stakeholders}
 
-In the future, we can improve our model training graph neural networks to learn the interaction of users and genres. In this way, music streaming services like Spotify, Apple Music, Amazon Music and similar platforms could create great and unique experiences for each user. 
-
-
+We want to exploit the graph structure of our data to train graph neural networks and learn the interaction of users and music genres.  Also, train classical and deep learning multivariate time series models to analyze the music genre preferences of one user. Ultimately, offer streaming services a recommendation system that can create a great and unique experience for each user.
 
 
 \begingroup
@@ -127,7 +145,7 @@ In the future, we can improve our model training graph neural networks to learn 
 \renewcommand{\section}[2]{}%
 
 \begin{thebibliography}{3}
-
+\footnotesize	
 \bibitem{statista}
 Götting M. 
 ``Music streaming worldwide - statistics \& facts". 10 Jan 2024, \url{https://www.statista.com/topics/6408/music-streaming/#topicOverview}. Accessed May 28, 2024. 
