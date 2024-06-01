@@ -58,6 +58,10 @@ In the process, we performed a comparison including and non including the duplic
 
 On the other hand, we evaluate some features on our data in the  [<code>feature_generation</code>](feature_generation) directory finding a similarity graph of music genres.
 
+<p align="center" width="50%">
+ <img src="presentation/images/genre-similarity.png" width=500>
+</p>
+
 ## Modelling Approach
 **Train-test-split**: We split chronologically into the train, validation and test set with 70\%, 15\% and 15\% of the edges respectively. 
 
