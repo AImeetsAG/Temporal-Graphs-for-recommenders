@@ -71,4 +71,7 @@ We want to exploit the graph structure of our data to train graph neural network
 
 ## Description of Repository
 
+The source code for the project is contained within the [<code>src</code>](https://github.com/peter-mm-williams/aware-nlp/tree/main/src) directory
+
+
 
