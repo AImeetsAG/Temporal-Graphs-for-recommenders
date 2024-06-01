@@ -44,9 +44,13 @@ The EDA for the project is contained within two folders. The [<code>notebooks</c
 
 As previously mentioned, the _tgbn-genre_ dataset posed a challenge. In [<code>raw-data-notebook</code>](notebooks/01-tgbn-genre-raw-data-preprocessing.ipynb) we showcase the duplicates and anomalies on the dataset. 
 
-Later, we processed the data into _tgbn-genre_node_labels_ (see [<code>eda-data-notebook</code>](notebooks/02-eda-tgbn-genre-dataset.ipynb) ). We performed a comparison including and non including the duplicate records. After the process we found the distribution of the error is largely centred around 0 as desired.
+Later, we processed the data into _tgbn-genre_node_labels_ (see [<code>eda-data-notebook</code>](notebooks/02-eda-tgbn-genre-dataset.ipynb) ). This proccess 'discretize' our data. We partition the total time range of the dataset into more-or-less 24-hour periods and combine all records for a given user and genre in a given 24-hour period into a single record for that day, by summing the corresponding edge weights. The sum of the edge weights over a 24-hour period represents a user's genre interactions for that day.
 
-ON the other hand, we evaluate some features on our data in the  [<code>feature_generation</code>](feature_generation) directory.
+Then, for each user-genre pair, the discretized edge weight over each seven-day period are combined into a single number between 0 and 1. The number, called a 'label_node', reflects a user's proclivity towards a certain genre over a given week, relative to all other genres. If a user doesn't listen to any songs belonging to a certain genre during the week, the weight corresponding to that genre is 0. If a user listens exclusively to songs that are 100% a certain genre during the week, the weight corresponding to that genre is 1. The label_nodes are normalized so that they sum to 1.
+
+In the process, we performed a comparison including and non including the duplicate records. After the process we found the distribution of the error is largely centred around 0 as desired.
+
+On the other hand, we evaluate some features on our data in the  [<code>feature_generation</code>](feature_generation) directory finding a similarity graph of music genres.
 
 ## Modelling Approach
 **Train-test-split**: We split chronologically into the train, validation and test set with 70\%, 15\% and 15\% of the edges respectively. 
