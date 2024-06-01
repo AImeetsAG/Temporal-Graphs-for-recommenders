@@ -50,6 +50,8 @@ Later, we processed the data into _tgbn-genre_node_labels_ (see [<code>eda-data-
 
 Then, for each user-genre pair, the discretized edge weight over each seven-day period are combined into a single number between 0 and 1. The number, called a 'label_node', reflects a user's proclivity towards a certain genre over a given week, relative to all other genres. If a user doesn't listen to any songs belonging to a certain genre during the week, the weight corresponding to that genre is 0. If a user listens exclusively to songs that are 100% a certain genre during the week, the weight corresponding to that genre is 1. The label_nodes are normalized so that they sum to 1.
 
+<img src="presentation/images/plot-user-517-pop.jpg" width=250 height=200>
+
 In the process, we performed a comparison including and non including the duplicate records. After the process we found the distribution of the error is largely centred around 0 as desired.
 
 On the other hand, we evaluate some features on our data in the  [<code>feature_generation</code>](feature_generation) directory finding a similarity graph of music genres.
