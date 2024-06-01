@@ -31,7 +31,9 @@ We worked with _tgbn-genre_ dataset, a temporal evolving graph from Temporal Gra
 
 The dataset _tgbn-genre_edgelist_ posed a challenge since the description given by the creators of the dataset did not match it. Additionally, it has anomalies and multiple duplicates. Hoewever, it was then processed into _tgbn-genre_node_labels_ a dynamical frequency interaction matrix where the interaction of each user and each genre is normalized over the span of a week. We train our models on this second dataset. Nevertheless, we explore the first dataset to comprehend the second one.
 
-![image](presentation/images/user-genre-interaction.png)
+<p align="center" width="50%">
+ <img src="presentation/images/user-genre-interaction.png" width=800>
+</p>
 
 [^huang23]: Huang, S., et al."Temporal graph benchmark for machine learning on temporal graphs" <em> Advances in Neural Information Processing Systems </em>, 2023. Preprint: [arXiv:2307.01026](https://doi.org/10.48550/arXiv.2307.01026), 2023.
 
