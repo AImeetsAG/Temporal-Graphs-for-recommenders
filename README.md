@@ -71,7 +71,11 @@ We want to exploit the graph structure of our data to train graph neural network
 
 ## Description of Repository
 
-The EDA for the project is contained within the [<code>notebooks</code>](notebooks) directory
+The EDA for the project is contained within two folders. The [<code>notebooks</code>](notebooks) directory. The functions run by the notebooks are stored in [<code>scripts</code>](scripts) directory. And the [<code>feature_generation</code>](feature_generation) directory.
+
+The fitted models are found in [<code>models</code>](models) directory.
+
+
 
 
 
