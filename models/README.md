@@ -16,5 +16,5 @@ Below is the results from our models
 | Rolling average (Window=7)    | 0.2242    | 0.1951
 | Rolling average (Window=14)    | 0.2333   | 0.2008
 | Rolling average (Window=21)    | 0.2345   | 0.2014
-| Exponential Smoothing ($\alpha=0.8$)    | 0.1642   | 0.1453
+| Exponential Smoothing ($\alpha=0.8$)    | 0.1941   | 0.1662
 | Exponential Smoothing ($\alpha=0.4$)    | 0.1827   | 0.1619
