@@ -14,6 +14,7 @@ This repository hosts our work on Temporal Graphs for Music Recommender Systems.
   * [Dataset](#Dataset)
   * [Exploratory Data Analysis](#Exploratory-Data-Analysis)
   * [Modeling Approach](#Modeling-Approach)
+  * [Results](#Results)
   * [Conclusions and Future Directions](#Conclusions-and-Future-Directions)
   * [Description of Repository](#Description-of-Repository)
 
@@ -50,6 +51,19 @@ Then we tried rolling average and did hyperparameter tuning with the window para
 **Key performance indicator:**  We use the  normalized discounted cumulative gain with 10 items (NDCG@10)[^ndcg]. It is the sum of the relevance of the item divided by the log basis two of the rank of the item plus one. So this is a holistic metric that accounts for both the relevance of the item and the rank of the prediction. To get the normalized version of the discounted cumulative gain, the discounted cumulative gain is divided by the maximum possible score.
 
 [^ndcg]: Evidently AI Team. "Normalized Discounted Cumulative Gain (NDCG) explained" https://www.evidentlyai.com/ranking-metrics/ndcg-metric#:~:text=Normalized%20Discounted%20Cumulative%20Gain%20(NDCG)%20is%20a%20ranking%20quality%20metric,the%20top%20of%20the%20list.  Accessed Jun 1, 2024.
+
+## Results
+
+| Model   | NDCG @10 (Validation) +- 0.0001 | NDCG @10 (Test) +-0.0001
+| -------- | ------- | ------- |
+| Latest node label (Baseline)  | 0.18068   | 0.1575
+| Mean node label | 0.2310    | 0.2034
+| Median node label    | 0.2140    | 0.1888
+| Rolling average (Window=7)    | 0.2242    | 0.1951
+| Rolling average (Window=14)    | 0.2333   | 0.2008
+| Rolling average (Window=21)    | 0.2345   | 0.2014
+| Exponential Smoothing ($\alpha=0.8$)    | 0.1941   | 0.1662
+| Exponential Smoothing ($\alpha=0.4$)    | 0.1827   | 0.1619
 
 ## Conclusions and Future Directions
 
