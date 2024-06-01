@@ -2,8 +2,7 @@
 
 [**Abhinav Chand**](https://github.com/AImeetsAG),
 [**Tristan Freiberg**](https://github.com/tmfreiberg), 
-[**Astrid Olave**](https://github.com/aaolaveh), 
-[**Ishika Ghosh**](https://github.com/ishikaghosh2201), 
+[**Astrid Olave**](https://github.com/aaolaveh)
 
 This is the team repository of team **_Graphical_** at Summer 2024 Bootcamp at Erdos institute. 
 This repository hosts our work on Temporal Graphs for Music Recommender Systems.
@@ -39,12 +38,22 @@ for Music Information Retrieval Conference (ISMIR 2011)_, 2011. http://millionso
 
 ## Exploratory Data Analysis
 
-## Modelling Approach
-Our goal is to predict  the frequency interaction vector of users in the test dataset. After the exploratory data analysis, we proceeded with basic time series models for the prediction. 
 
-Time series
+
+## Modelling Approach
+**Train-test-split**: We split chronologically into the train, validation and test set with 70\%, 15\% and 15\% of the edges respectively. 
+
+**Models:** We experimented with several time series models. For the baseline model we chose the latest node label, i.e., for each user and genre in the test dataset, we look at the latest weight of that user for that genre in the training set and use that as the prediction. We looked at the time signal of the user genre weights for many users and did not find any seasonality or trend. Moreover, it was not feasible to detect seasonality or trend for all 992 users with a scalable algorithm.
+
+Then we tried rolling average and did hyperparameter tuning with the window parameter. Finally we tried exponential smoothing with hyperparameter tuning on the smoothing parameter.
+
+**Key performance indicator:**  We use the  normalized discounted cumulative gain with 10 items (NDCG@10)[^ndcg]. It is the sum of the relevance of the item divided by the log basis two of the rank of the item plus one. So this is a holistic metric that accounts for both the relevance of the item and the rank of the prediction. To get the normalized version of the discounted cumulative gain, the discounted cumulative gain is divided by the maximum possible score.
+
+[^ndcg]: Evidently AI Team. "Normalized Discounted Cumulative Gain (NDCG) explained" https://www.evidentlyai.com/ranking-metrics/ndcg-metric#:~:text=Normalized%20Discounted%20Cumulative%20Gain%20(NDCG)%20is%20a%20ranking%20quality%20metric,the%20top%20of%20the%20list.  Accessed Jun 1, 2024.
 
 ## Conclusions and Future Directions
+
+We want to exploit the graph structure of our data to train graph neural networks and learn the interaction of users and music genres.  Also, train classical and deep learning multivariate time series models to analyze the music genre preferences of one user. Ultimately, offer streaming services a recommendation system that can create a great and unique experience for each user.
 
 ## Description of Repository
 
