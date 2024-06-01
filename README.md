@@ -42,9 +42,9 @@ for Music Information Retrieval Conference (ISMIR 2011)_, 2011. http://millionso
 
 The EDA for the project is contained within two folders. The [<code>notebooks</code>](notebooks) directory. The functions run by the notebooks are stored in [<code>scripts</code>](scripts) directory.
 
-As previously mentioned, the _tgbn-genre_ dataset posed a challenge. In [<code>raw-data-notebook](notebooks/01-tgbn-genre-raw-data-preprocessing.ipynb) we showcase the duplicates and anomalies on the dataset. 
+As previously mentioned, the _tgbn-genre_ dataset posed a challenge. In [<code>raw-data-notebook</code>](notebooks/01-tgbn-genre-raw-data-preprocessing.ipynb) we showcase the duplicates and anomalies on the dataset. 
 
-Later, we processed the data into _tgbn-genre_node_labels_ (see [<code>eda-data-notebook](notebooks/02-eda-tgbn-genre-dataset.ipynb) ). We performed a comparison including and non including the duplicate records. After the process we found the distribution of the error is largely centred around 0 as desired.
+Later, we processed the data into _tgbn-genre_node_labels_ (see [<code>eda-data-notebook</code>](notebooks/02-eda-tgbn-genre-dataset.ipynb) ). We performed a comparison including and non including the duplicate records. After the process we found the distribution of the error is largely centred around 0 as desired.
 
 ON the other hand, we evaluate some features on our data in the  [<code>feature_generation</code>](feature_generation) directory.
 
