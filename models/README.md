@@ -1,7 +1,7 @@
 Below is the results from our models
 
 1. inference_baseline.ipynb\
-        Took latest, mean, median prediction. Not the most efficient I think. Worked with dataframe. Need to create a dictionary of {timestamp:{usr:{genre:weight}}} (Check baseline.ipynb). Pandas is faster because of groupby and merge operations. Actually seems like pandas is faster than dictionary lookup.
+        Took latest, mean, median prediction. Not the most efficient I think. Worked with dataframe. Need to create a dictionary of {timestamp:{usr:{genre:weight}}} (Check baseline.ipynb). Pandas is faster because of groupby and merge operations. 
 2. rollingaverage.ipynb\
         Took moving average with window =7,14,21
         Don't have hardware to do a proper gridlike hyperparameter tuning. For now window =14 performs best.
