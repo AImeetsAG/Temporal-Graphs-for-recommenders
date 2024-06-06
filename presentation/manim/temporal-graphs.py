@@ -195,7 +195,7 @@ class array(Scene):
 
             if j == n - 1:
                 item = ["Sum over week-long window",
-                        "Normalize by column sum"]
+                        "Normalize by row sum"]
                 blist3 = BulletedList(item[0],
                                       item[1]).set_color(BLACK).arrange(DOWN, aligned_edge=LEFT).to_edge(UL)
                 self.play(Write(blist3[0]),
